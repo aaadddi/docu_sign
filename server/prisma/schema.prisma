@@ -12,21 +12,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id String @id @default(uuid())
-  email String @unique
-  pasword String
-  firstName String
-  LastName String
+  id         String @id @default(uuid())
+  email      String @unique
+  pasword    String
+  firstName  String
+  LastName   String
   dateJoined String
-  docs Docs[]
+  docs       Docs[]
 }
 
 model Docs {
-  id String @id @default(uuid())
-  userID String
-  owner User @relation(fields: [userID], references: [id])
-  link String
-  dateCreated DateTime 
+  id          String   @id @default(uuid())
+  userID      String
+  owner       User     @relation(fields: [userID], references: [id])
+  link        String
+  dateCreated DateTime
 }
-
